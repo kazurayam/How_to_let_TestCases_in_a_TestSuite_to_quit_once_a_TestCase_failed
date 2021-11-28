@@ -5,7 +5,7 @@ on:
     branches:
       - main
 
-jjobs:
+jobs:
   embed-code:
     runs-on: ubuntu-latest
     steps:
