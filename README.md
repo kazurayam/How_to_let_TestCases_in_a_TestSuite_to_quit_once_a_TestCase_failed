@@ -51,9 +51,9 @@ Next, please try to run `Test Suites/TSb`. The `TSb` is comprised with 3 Test Ca
 
 ![TSb](docs/images/TSb.png)
 
-As you see, the `TSb` can shorte the duration required for the `TC3` after the failed `TC2`.
+As you see, the `TSb` can shorten the duration required for the `TC3` after the failed `TC2`.
 
-Yes, Katalon Studio still executes all of 3 Test Cases defined in the Test Case `TSb`. But the Test Cases are coded to quit soon if a preceding Test Case failed. Therefore `TSb` can eliminate redundant duration of test cases to run if any failed.
+Yes, Katalon Studio still executes all of 3 Test Cases defined in the Test Case `TSb`. But the Test Cases are coded so that they quit soon if one or more preceding Test Cases failed. Therefore `TSb` can eliminate redundant duration.
 
 ## How you should write your code
 
@@ -93,7 +93,7 @@ if (Advisor.shouldQuit()) return;
 
 #### Test Listener
 
-You will wonder how `Advisor` can advise Test Cases if they should quit or not. How the `Advisor` is informed if each of preceding Test Cases passed or failed? The trick is done by a Test Listener.
+You will wonder how `Advisor` can advise Test Cases if they should quit or not. How the `Advisor` is informed that any of preceding Test Cases passed or failed? The trick is performed by a Test Listener.
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
 
@@ -109,5 +109,5 @@ You need to write a Test Listener like this manually. It is not bundled in the j
 The source code of the magical classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
 
 - [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy)
-- [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
-- [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
+- [`com.kazurayam.ks.testsuite.ProgressEntry`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
+- [`com.kazurayam.ks.testsuite.ProgressListener`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
