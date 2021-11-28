@@ -41,8 +41,21 @@ See the following screenshot how the `Drivers` folder would look like:
 
 ![Drivers](docs/images/Drivers.png)
 
+## Demonstration
 
-## How to write your code
+You want to run `Test Suites/TSa`. The `TSa` is comprised with 3 Test Cases: `TS1_passes`, `TS2_passes`, `TS3_passes`. When you run `TSa`, all of compont Test Cases will pass.
+
+![TSa](docs/images/TSa.png)
+
+Next, please try to run `Test Suites/TSb`. The `TSb` is comprised with 3 Test Cases: `TS1_passes`, `TS2_fails`, `TS3_passes`. When you run it, `TS2_fails` will fail, and `TS3_passes` will quit soon without doing anything meaningful.
+
+![TSb](docs/images/TSb.png)
+
+As you see, the `TSb` can shorte the duration required for the `TC3` after the failed `TC2`.
+
+Yes, Katalon Studio still executes all of 3 Test Cases defined in the Test Case `TSb`. But the Test Cases are coded to quit soon if a preceding Test Case failed. Therefore `TSb` can eliminate redundant duration of test cases to run if any failed.
+
+## How you should write your code
 
 ### Test Cases
 
@@ -68,6 +81,33 @@ I wrote 4 Test Cases.
 ```java:Scripts/TC3_passes/Script1638068553061.groovy
 ```
 
+Please note that all these Test Cases has a common section at the very beginning:
+
+```
+import com.kazurayam.ks.testsuite.Advisor
+
+if (Advisor.shouldQuit()) return;
+```
+
+`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisoor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite haved failed, then `shouldQuit()` will return true. Then the test case should quit immediately by the statement `return;`
+
 #### Test Listener
 
+You will wonder how `Advisor` can advise Test Cases if they should quit or not. How the `Advisor` is informed if each of preceding Test Cases passed or failed? The trick is done by a Test Listener.
 
+[Test Listeners/TL1](Test%20Listeners/TL1.groovy)
+
+```java:Test%20Listeners/TL1.groovy
+```
+
+You need to write a Test Listener like this manually. It is not bundled in the jar file.
+
+`TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
+
+## Magic
+
+The source code of the magical classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
+
+- [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy)
+- [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
+- [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
