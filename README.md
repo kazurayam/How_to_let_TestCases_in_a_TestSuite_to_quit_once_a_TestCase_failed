@@ -1,4 +1,4 @@
-# Test Suite Advisor --- how to let TestCases in a TestSuite to break after one TestCase failed
+# How to let TestCases in a TestSuite to quit once a TestCase failed
 
 ## Problem to solve
 
@@ -30,19 +30,27 @@ If there are any failed Test Cases, then a Test Case should quit immediately. A 
 
 I will introduce a few Groovy classes that implements *Self-deterministic Test Cases in Test Suite*. A jar file that includes the module will be provided.
 
-## How to use this
 
-### Dependencies
+## Dependencies
 
 At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvizor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
 
 TestSuiteAdvisor internally depends on the [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader/releases) project's jar. You want to copy the jar into your project's `Drivers' folder as well.
 
-### How to write your code
+See the following screenshot how the `Drivers` folder would look like:
 
-#### Test Cases
+![Drivers](docs/images/Drivers.png)
 
-```java:Scripts/TC1_passes/Script163
+
+## How to write your code
+
+### Test Cases
+
+I wrote 4 Test Cases.
+
+[TC1_passes](Scripts/TC1_passes/Script1638068375427.groovy)
+
+```java:Scripts/TC1_passes/Script1638068375427.groovy
 ```
 
 #### Test Listener
