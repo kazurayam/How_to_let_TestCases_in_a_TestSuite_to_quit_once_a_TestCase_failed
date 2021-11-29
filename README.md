@@ -123,7 +123,7 @@ if (Advisor.shouldQuit()) return;
 Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are supposed to choose for themselves. This is a sort of [Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control#:~:text=In%20software%20engineering%2C%20inversion%20of,control%20from%20a%20generic%20framework.).
 
 #### Test Listener
-
+ 
 You will wonder how `Advisor` is informed of the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
