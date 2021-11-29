@@ -59,8 +59,6 @@ I wrote 4 Test Cases.
 
 [source,groovy]
 ----
-```
 include::Scripts/TC1_passes/Script1638068375427.groovy[]
-```
 ----
 
