@@ -3,9 +3,9 @@ package com.kazurayam.ks.testsuite
 import java.nio.file.Files
 import java.nio.file.Path
 
+import com.kazurayam.ks.globalvariable.ExpandoGlobalVariable
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.context.TestCaseContext
-import com.kazurayam.ks.globalvariable.ExpandoGlobalVariable
 import com.kms.katalon.core.util.KeywordUtil
 
 import groovy.json.JsonSlurper
