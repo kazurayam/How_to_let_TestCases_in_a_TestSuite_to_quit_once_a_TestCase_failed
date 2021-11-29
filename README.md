@@ -47,7 +47,7 @@ You want to run `Test Suites/TSa`. The `TSa` is comprised with 3 Test Cases: `TS
 
 ![TSa](docs/images/TSa.png)
 
-Next, please try to run `Test Suites/TSb`. The `TSb` is comprised with 3 Test Cases: `TS1_passes`, `TS2_fails`, `TS3_passes`. When you run it, `TS2_fails` will fail, and `TS3_passes` will quit soon without doing anything meaningful.
+Next, please run the `Test Suites/TSb`. The `TSb` is comprised with 3 Test Cases: `TS1_passes`, `TS2_fails`, `TS3_passes`. When you run it, `TS2_fails` will fail intentionally, and **`TS3_passes` quits soon before doing any meaningful actions**.
 
 ![TSb](docs/images/TSb.png)
 
