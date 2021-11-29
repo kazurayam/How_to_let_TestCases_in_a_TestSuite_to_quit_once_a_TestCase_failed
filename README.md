@@ -127,9 +127,9 @@ if (Advisor.shouldQuit()) return;
 
 #### Design
 
-`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should decide; if it wants to, can quit immediately by explicitly calling the statement `return;`
+`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should decide; if it wants to, it can quit immediately by calling the statement `return;`
 
-Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases chooses for themselves. This design allocates more responsibility to Test Cases than to Katalon Studio engine. I think this is more flexible.
+Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are supposed to choose for themselves. This is a sort of [Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control#:~:text=In%20software%20engineering%2C%20inversion%20of,control%20from%20a%20generic%20framework.).
 
 #### Test Listener
 
