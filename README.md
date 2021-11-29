@@ -133,7 +133,7 @@ Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are 
 
 #### Test Listener
 
-You will wonder how `Advisor` can advise Test Cases if they should quit or not. How the `Advisor` is informed that any of preceding Test Cases passed or failed? The trick is performed by a Test Listener.
+You will wonder how `Advisor` is informed if the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
 
@@ -163,9 +163,12 @@ class TL1 {
 }
 ```
 
-You need to write a Test Listener like this manually. It is not bundled in the jar file.
+The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
 
-`TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
+The Test Listener is not bundled in the jar file.
+You need to write a Test Listener like this manually. 
+You can just copy and paste the above code. 
+
 
 ## Other source codes
 
