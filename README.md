@@ -124,7 +124,7 @@ Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are 
 
 #### Test Listener
 
-You will wonder how `Advisor` is informed if the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
+You will wonder how `Advisor` is informed of the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
 
