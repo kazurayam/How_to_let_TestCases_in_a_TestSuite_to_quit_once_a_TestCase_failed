@@ -28,15 +28,6 @@ I will let it invoke all Test Cases in a Test Suite as defined.
 Rather, I would write *each Test Cases to check if any of preceding Test Cases in the Test Suite has failed*. 
 If there are any failed Test Cases, then a Test Case should quit immediately. A Test Case should check it before executing the body of test processes to prevent consuming time. I will introduce a few custom Groovy classes. A jar file that includes the module will be provided. Provided that Test Cases are informed of the results of preceding Test Cases, following Test Cases can be self-deterministic.
 
-## Dependencies
-
-At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvisor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
-
-TestSuiteAdvisor internally depends on the [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader/releases) project's jar. You want to copy the jar into your project's `Drivers' folder as well.
-
-See the following screenshot how the `Drivers` folder would look like:
-
-![Drivers](docs/images/Drivers.png)
 
 ## Demonstration
 
@@ -179,3 +170,12 @@ The source code of the other classes are disclosed on another GigHub repository.
 - [`com.kazurayam.ks.testsuite.ProgressListener`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
 
 
+## Dependencies
+
+At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvisor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
+
+TestSuiteAdvisor internally depends on the [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader/releases) project's jar. You want to copy the jar into your project's `Drivers' folder as well.
+
+See the following screenshot how the `Drivers` folder would look like:
+
+![Drivers](docs/images/Drivers.png)
