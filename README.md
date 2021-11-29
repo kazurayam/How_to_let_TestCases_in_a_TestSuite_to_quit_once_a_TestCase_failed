@@ -111,3 +111,6 @@ The source code of the magical classes are disclosed on another GigHub repositor
 - [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy)
 - [`com.kazurayam.ks.testsuite.ProgressEntry`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
 - [`com.kazurayam.ks.testsuite.ProgressListener`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
+
+
+Do you like this?
