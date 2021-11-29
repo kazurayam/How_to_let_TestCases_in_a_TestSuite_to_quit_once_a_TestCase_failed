@@ -63,22 +63,61 @@ I wrote 4 Test Cases.
 
 #### [TC1_passes](Scripts/TC1_passes/Script1638068375427.groovy)
 
-```java:Scripts/TC1_passes/Script1638068375427.groovy
+```groovy:Scripts/TC1_passes/Script1638068375427.groovy
+import com.kazurayam.ks.testsuite.Advisor
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+if (Advisor.shouldQuit()) return;
+
+WebUI.comment("TC1 ran")
+
+for (int i in 1..3) {
+	WebUI.comment("TC1 is doing a heavy task: ${i}")
+}
 ```
 
 #### [TC2_fails](Scripts/TC2_fails/Script1638068381665.groovy)
 
-```java:Scripts/TC2_fails/Script1638068381665.groovy
+```groovy:Scripts/TC2_fails/Script1638068381665.groovy
+import com.kazurayam.ks.testsuite.Advisor
+import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+if (Advisor.shouldQuit()) return;
+
+WebUI.comment("TC2 ran")
+
+KeywordUtil.markFailed("TC2 failed")
 ```
 
 #### [TC2_passes](Scripts/TC2_passes/Script1638068635076.groovy)
 
-```java:Scripts/TC2_passes/Script1638068635076.groovy
+```groovy:Scripts/TC2_passes/Script1638068635076.groovy
+import com.kazurayam.ks.testsuite.Advisor
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+if (Advisor.shouldQuit()) return;
+
+WebUI.comment("TC2 ran")
+
+for (int i in 1..3) {
+	WebUI.comment("TC2 is doing a heavy task: ${i}")
+}
 ```
 
 #### [TC3_passes](Scripts/TC3_passes/Script1638068553061.groovy)
 
 ```java:Scripts/TC3_passes/Script1638068553061.groovy
+import com.kazurayam.ks.testsuite.Advisor
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+if (Advisor.shouldQuit()) return;
+
+WebUI.comment("TC3 ran")
+
+for (int i in 1..3) {
+	WebUI.comment("TC3 is doing a heavy task: ${i}")
+}
 ```
 
 Please note that all these Test Cases has a common section at the very beginning:
@@ -97,20 +136,42 @@ You will wonder how `Advisor` can advise Test Cases if they should quit or not. 
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
 
-```java:Test%20Listeners/TL1.groovy
+```groovy:Test%20Listeners/TL1.groovy
+import com.kazurayam.ks.testsuite.ProgressListener
+
+import com.kms.katalon.core.annotation.AfterTestCase
+import com.kms.katalon.core.annotation.BeforeTestSuite
+import com.kms.katalon.core.context.TestCaseContext
+import com.kms.katalon.core.context.TestSuiteContext
+
+class TL1 {
+
+	ProgressListener listener
+
+	TL1() {
+		this.listener = new ProgressListener()
+	}
+	@BeforeTestSuite
+	def beforeTestSuite(TestSuiteContext testSuiteContext) {
+		listener.beforeTestSuite(testSuiteContext)
+	}
+	@AfterTestCase
+	def afterTestCase(TestCaseContext testCaseContext) {
+		listener.afterTestCase(testCaseContext)
+	}
+}
 ```
 
 You need to write a Test Listener like this manually. It is not bundled in the jar file.
 
 `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
 
-## Magic
+## Other source codes
 
-The source code of the magical classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
+The source code of the other classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
 
 - [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy)
 - [`com.kazurayam.ks.testsuite.ProgressEntry`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
 - [`com.kazurayam.ks.testsuite.ProgressListener`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
 
 
-Do you like this?
