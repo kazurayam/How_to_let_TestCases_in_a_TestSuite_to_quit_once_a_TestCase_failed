@@ -17,7 +17,8 @@ jobs:
           token: ${{ secrets.MY_ACCESS_TOKEN }}
           persist-credentials: false
           fetch-depth: 0
-          ref: refs/heads/${{ github.head_ref }}
+          #ref: refs/heads/${{ github.head_ref }}
+          ref: refs/heads/master
 
       - uses: tokusumi/markdown-embed-code@main
         with:
