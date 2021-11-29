@@ -30,7 +30,7 @@ If there are any failed Test Cases, then a Test Case should quit immediately. A 
 
 ## Dependencies
 
-At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvizor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
+At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvisor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
 
 TestSuiteAdvisor internally depends on the [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader/releases) project's jar. You want to copy the jar into your project's `Drivers' folder as well.
 
@@ -125,7 +125,10 @@ import com.kazurayam.ks.testsuite.Advisor
 if (Advisor.shouldQuit()) return;
 ```
 
-`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisoor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite haved failed, then `shouldQuit()` will return true. Then the test case should quit immediately by the statement `return;`
+`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should quit immediately by explicitly calling the statement `return;`
+
+Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases chooses for themselves. This allocation of responsibility enables better flexibility.
+
 
 #### Test Listener
 
