@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description></description>
-   <name>TestSuiteAdvisor</name>
+   <name>How_to_let_TestCases_in_a_TestSuite_to_quit_once_a_TestCase_failed</name>
    <tag></tag>
    <UUID>3bd456c5-660e-4f9b-8442-ca547d3e2a6d</UUID>
    <migratedVersion>5.9.0</migratedVersion>
