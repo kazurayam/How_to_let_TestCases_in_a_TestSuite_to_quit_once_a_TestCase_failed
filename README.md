@@ -125,10 +125,11 @@ import com.kazurayam.ks.testsuite.Advisor
 if (Advisor.shouldQuit()) return;
 ```
 
+#### Design
+
 `com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should quit immediately by explicitly calling the statement `return;`
 
-Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases chooses for themselves. This allocation of responsibility enables better flexibility.
-
+Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases chooses for themselves. This design allocates more responsibility to Test Cases than to Katalon Studio engine. I think this is more flexible.
 
 #### Test Listener
 
