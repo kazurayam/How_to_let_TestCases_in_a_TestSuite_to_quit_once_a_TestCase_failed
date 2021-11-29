@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_ACCESS_TOKEN }}
           persist-credentials: false
           fetch-depth: 0
           ref: refs/heads/${{ github.head_ref }}
@@ -22,6 +22,6 @@ jobs:
       - uses: tokusumi/markdown-embed-code@main
         with:
           markdown: "README.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_ACCESS_TOKEN }}
           message: "synchronizing Readme"
           silent: false
