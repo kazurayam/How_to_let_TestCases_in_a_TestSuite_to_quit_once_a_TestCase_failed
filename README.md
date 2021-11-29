@@ -26,10 +26,7 @@ I will not ask Katalon Studio to control if it should invoke each Test Cases (TC
 I will let it invoke all Test Cases in a Test Suite as defined.
 
 Rather, I would write *each Test Cases to check if any of preceding Test Cases in the Test Suite has failed*. 
-If there are any failed Test Cases, then a Test Case should quit immediately. A Test Case should check it before executing the body of test processes to prevent consuming time. Test Cases can be self-deterministic if it is informed if any of its preceding Test Cases in a Test Suite has failed or not.
-
-I will introduce a few Groovy classes that implements *Self-deterministic Test Cases in Test Suite*. A jar file that includes the module will be provided.
-
+If there are any failed Test Cases, then a Test Case should quit immediately. A Test Case should check it before executing the body of test processes to prevent consuming time. I will introduce a few custom Groovy classes. A jar file that includes the module will be provided. Provided that Test Cases are informed of the results of preceding Test Cases, following Test Cases can be self-deterministic.
 
 ## Dependencies
 
