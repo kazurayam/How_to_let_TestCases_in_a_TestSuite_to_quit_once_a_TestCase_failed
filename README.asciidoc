@@ -1,10 +1,15 @@
 = How to let Test Cases in a Test Suite to quit once a Test Cases failed
 
+:toc:
+:toc-placement!:
+
+Here is my preamble paragraph, but I could really place the TOC anywhere! Lorem ipsum foo bar baz.
+
+toc::[]
+
 == Problem to solve
 
-A topic in the Katalon User Forum wrote:
-
-* https://forum.katalon.com/t/stop-all-test-suite-if-one-test-case-failed/49629[Stop all test suite if one test case failed]
+A topic in the Katalon User Forum https://forum.katalon.com/t/stop-all-test-suite-if-one-test-case-failed/49629[Stop all test suite if one test case failed] wrote :
 
 [quote]
 ----
@@ -56,5 +61,3 @@ I wrote 4 Test Cases.
 ----
 include::Scripts/TC1_passes/Script1638068375427.groovy[]
 ----
-
-
