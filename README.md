@@ -4,9 +4,9 @@
 
 A topic in the Katalon User Forum [Stop all test suite if one test case failed](https://forum.katalon.com/t/stop-all-test-suite-if-one-test-case-failed/49629) wrote :
 
-&gt;Hi,
-&gt;there is a way to stop a test suite if one of its cases fails?
-&gt;I need some method or form to stop the suite, does anyone have a solution?
+    Hi,
+    there is a way to stop a test suite if one of its cases fails?
+    I need some method or form to stop the suite, does anyone have a solution?
 
 Fair enough requirement, I think.
 Let me assume I have a Test Suite `TS1` is comprised with 3 Test Cases: `TC1`, `TC2`, `TC3`.
