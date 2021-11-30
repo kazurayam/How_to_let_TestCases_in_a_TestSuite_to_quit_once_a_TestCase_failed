@@ -58,3 +58,81 @@ I wrote 4 Test Cases.
     for (int i in 1..3) {
         WebUI.comment("TC1 is doing a heavy task: ${i}")
     }
+
+#### [TC2\_fails](Scripts/TC2_fails/Script1638068381665.groovy)
+
+    import com.kazurayam.ks.testsuite.Advisor
+    import com.kms.katalon.core.util.KeywordUtil
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    if (Advisor.shouldQuit()) return;
+
+    WebUI.comment("TC2 ran")
+
+    KeywordUtil.markFailed("TC2 failed")
+
+#### [TC2\_passes](Scripts/TC2_passes/Script1638068635076.groovy)
+
+    import com.kazurayam.ks.testsuite.Advisor
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    if (Advisor.shouldQuit()) return;
+
+    WebUI.comment("TC2 ran")
+
+    for (int i in 1..3) {
+        WebUI.comment("TC2 is doing a heavy task: ${i}")
+    }
+
+#### [TC3\_passes](Scripts/TC3_passes/Script1638068553061.groovy)
+
+    import com.kazurayam.ks.testsuite.Advisor
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    if (Advisor.shouldQuit()) return;
+
+    WebUI.comment("TC3 ran")
+
+    for (int i in 1..3) {
+        WebUI.comment("TC3 is doing a heavy task: ${i}")
+    }
+
+#### Design
+
+`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should decide; if it wants to, it can quit immediately by calling the statement `return;`
+
+Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are supposed to choose for themselves. This is a sort of [Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control#:~:text=In%20software%20engineering%2C%20inversion%20of,control%20from%20a%20generic%20framework).
+
+#### Test Listener
+
+You will wonder how `Advisor` is informed of the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
+
+[Test Listeners/TL1](Test%20Listeners/TL1.groovy)
+
+    Unresolved directive in README_.adoc - include::Test%20Listeners/TL1.groovy[]
+
+The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
+
+The Test Listener is not bundled in the jar file.
+You need to write a Test Listener like this manually.
+You can just copy and paste the above code.
+
+## Other source codes
+
+The source code of the other classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
+
+-   [`com.kazurayam.ks.testsuite.Advisor`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy)
+
+-   [`com.kazurayam.ks.testsuite.ProgressEntry`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy)
+
+-   [`com.kazurayam.ks.testsuite.ProgressListener`](https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy)
+
+## Dependencies
+
+At the [Releases](https://github.com/kazurayam/TestSuiteAdvisor/releases) page, you can download the jar of `TestSuiteAdvisor-x.x.x.jar`. You want to copy that jar into your project’s `Drivers` folder.
+
+TestSuiteAdvisor internally depends on the [ExecutionProfilesLoader](https://github.com/kazurayam/ExecutionProfilesLoader/releases) project’s jar. You want to copy the jar into your project’s \`Drivers' folder as well.
+
+See the following screenshot how the `Drivers` folder would look like:
+
+![Drivers](docs/images/Drivers.png)

@@ -56,3 +56,70 @@ I wrote 4 Test Cases.
 include::Scripts/TC1_passes/Script1638068375427.groovy[]
 ----
 
+
+==== link:Scripts/TC2_fails/Script1638068381665.groovy[TC2_fails]
+
+[source,groovy]
+----
+include::Scripts/TC2_fails/Script1638068381665.groovy[]
+----
+
+
+==== link:Scripts/TC2_passes/Script1638068635076.groovy[TC2_passes]
+
+[source,groovy]
+----
+include::Scripts/TC2_passes/Script1638068635076.groovy[]
+----
+
+
+==== link:Scripts/TC3_passes/Script1638068553061.groovy[TC3_passes]
+
+[source,groovy]
+----
+include::Scripts/TC3_passes/Script1638068553061.groovy[]
+----
+
+
+==== Design
+
+
+`com.kazurayam.ks.testsuite.Advisor` is a Custom Groovy class that I developed. This is included in the `TestSuiteAdvisor-x.x.x.jar` file. A call to `Advisor.shouldQuit()` would return a Boolean value. If one or more preceding Test Cases in a Test Suite have failed, then `shouldQuit()` will return true. Then the test case should decide; if it wants to, it can quit immediately by calling the statement `return;`
+
+Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are supposed to choose for themselves. This is a sort of https://en.wikipedia.org/wiki/Inversion_of_control#:~:text=In%20software%20engineering%2C%20inversion%20of,control%20from%20a%20generic%20framework[Inversion of control].
+
+
+==== Test Listener
+ 
+You will wonder how `Advisor` is informed of the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
+
+link:Test%20Listeners/TL1.groovy[Test Listeners/TL1]
+
+[source,groovy]
+----
+include::Test%20Listeners/TL1.groovy[]
+----
+
+The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
+
+The Test Listener is not bundled in the jar file.
+You need to write a Test Listener like this manually. 
+You can just copy and paste the above code. 
+
+== Other source codes
+
+The source code of the other classes are disclosed on another GigHub repository. Please have a look if you are interested in the internal.
+
+- https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/Advisor.groovy[`com.kazurayam.ks.testsuite.Advisor`]
+- https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressEntry.groovy[`com.kazurayam.ks.testsuite.ProgressEntry`]
+- https://github.com/kazurayam/TestSuiteAdvisor/blob/master/Keywords/com/kazurayam/ks/testsuite/ProgressListener.groovy[`com.kazurayam.ks.testsuite.ProgressListener`]
+
+== Dependencies
+
+At the https://github.com/kazurayam/TestSuiteAdvisor/releases[Releases] page, you can download the jar of `TestSuiteAdvisor-x.x.x.jar`. You want to copy that jar into your project's `Drivers` folder.
+
+TestSuiteAdvisor internally depends on the https://github.com/kazurayam/ExecutionProfilesLoader/releases[ExecutionProfilesLoader] project's jar. You want to copy the jar into your project's `Drivers' folder as well.
+
+See the following screenshot how the `Drivers` folder would look like:
+
+image::docs/images/Drivers.png[Drivers]
