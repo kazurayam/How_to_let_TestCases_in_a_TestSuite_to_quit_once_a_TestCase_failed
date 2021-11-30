@@ -109,7 +109,29 @@ You will wonder how `Advisor` is informed of the status preceding Test Cases (pa
 
 [Test Listeners/TL1](Test%20Listeners/TL1.groovy)
 
-    Unresolved directive in README_.adoc - include::Test%20Listeners/TL1.groovy[]
+    import com.kazurayam.ks.testsuite.ProgressListener
+
+    import com.kms.katalon.core.annotation.AfterTestCase
+    import com.kms.katalon.core.annotation.BeforeTestSuite
+    import com.kms.katalon.core.context.TestCaseContext
+    import com.kms.katalon.core.context.TestSuiteContext
+
+    class TL1 {
+
+        ProgressListener listener
+
+        TL1() {
+            this.listener = new ProgressListener()
+        }
+        @BeforeTestSuite
+        def beforeTestSuite(TestSuiteContext testSuiteContext) {
+            listener.beforeTestSuite(testSuiteContext)
+        }
+        @AfterTestCase
+        def afterTestCase(TestCaseContext testCaseContext) {
+            listener.afterTestCase(testCaseContext)
+        }
+    }
 
 The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
 

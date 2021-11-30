@@ -97,7 +97,7 @@ link:Test%20Listeners/TL1.groovy[Test Listeners/TL1]
 
 [source,groovy]
 ----
-include::Test%20Listeners/TL1.groovy[]
+include::Test Listeners/TL1.groovy[]
 ----
 
 The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
