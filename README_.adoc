@@ -2,17 +2,17 @@
 
 == Problem to solve
 
-A topic in the Katalon User Forum https://forum.katalon.com/t/stop-all-test-suite-if-one-test-case-failed/49629[Stop all test suite if one test case failed] wrote :
+A topic in the Katalon User Forum:
 
-[quote]
-----
+[quote,matiasduarte99, Stop all test suite if one test case failed (https://forum.katalon.com/t/stop-all-test-suite-if-one-test-case-failed/49629)]
+____
 Hi,
 there is a way to stop a test suite if one of its cases fails?
 I need some method or form to stop the suite, does anyone have a solution?
-----
+____
 
-Fair enough requirement, I think. 
-Let me assume I have a Test Suite `TS1` is comprised with 3 Test Cases: `TC1`, `TC2`, `TC3`. 
+Fair enough requirement, I think.
+Let me assume I have a Test Suite `TS1` is comprised with 3 Test Cases: `TC1`, `TC2`, `TC3`.
  The `TC3` runs very long (e.g, 20 minutes). The `TC2` normally passes but occasionally fails.
 When I run the `TS1` and unfortunately the `TC2` failed, I want the `TS1` stops as soon as the `TC2` failed.
 I do not want to wait for the `TC3` to finish after 20 minutes.
@@ -26,7 +26,7 @@ What else can I do practically to let a Test Suite to finish as soon as a Test C
 I will not ask Katalon Studio to control if it should invoke each Test Cases (TC1, TC2, TC3) or not.
 I will let it invoke all Test Cases in a Test Suite as defined.
 
-Rather, I would write *each Test Cases to check if any of preceding Test Cases in the Test Suite has failed*. 
+Rather, I would write *each Test Cases to check if any of preceding Test Cases in the Test Suite has failed*.
 If there are any failed Test Cases, then a Test Case should quit immediately. A Test Case should check it before executing the body of test processes to prevent consuming time. I will introduce a few custom Groovy classes. A jar file that includes the module will be provided. Provided that Test Cases are informed of the results of preceding Test Cases, following Test Cases can be self-deterministic.
 
 == Demonstration
@@ -90,7 +90,7 @@ Katalon Studio will ignorantly trigger your Test Cases, and your Test Cases are 
 
 
 ==== Test Listener
- 
+
 You will wonder how `Advisor` is informed of the status preceding Test Cases (passed or failed)? The trick is performed by a Test Listener.
 
 link:Test%20Listeners/TL1.groovy[Test Listeners/TL1]
@@ -103,8 +103,8 @@ include::Test Listeners/TL1.groovy[]
 The `TL1` delegates another custom class `com.kazurayam.ks.testsuite.ProgressListener` to inform the `Advisor` of the status (`PASSED` or `FAILED`) of all Test Cases.
 
 The Test Listener is not bundled in the jar file.
-You need to write a Test Listener like this manually. 
-You can just copy and paste the above code. 
+You need to write a Test Listener like this manually.
+You can just copy and paste the above code.
 
 == Other source codes
 
